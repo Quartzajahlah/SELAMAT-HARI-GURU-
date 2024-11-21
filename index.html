@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SELAMAT HARI GURU SMP FIKRI</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #FFD700, #FFCC00);
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .open-btn {
+      font-size: 2rem;
+      color: #2575fc;
+      background-color: transparent;
+      border: 2px solid #2575fc;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .open-btn:hover {
+      background-color: #2575fc;
+      color: white;
+    }
+
+    .message {
+      display: none;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .effects {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .effect {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      animation: grow-fade 3s infinite ease-in-out;
+    }
+
+    .effect.star {
+      background: radial-gradient(circle, #FFFFFF, #FFD700);
+    }
+
+    .effect.heart {
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, #FF69B4, #FF1493);
+      clip-path: polygon(50% 0%, 61% 19%, 78% 19%, 100% 50%, 78% 81%, 50% 100%, 22% 81%, 0% 50%, 22% 19%, 39% 19%);
+    }
+
+    .effect.flower {
+      background: radial-gradient(circle, #FF4500, #FF6347);
+    }
+
+    @keyframes grow-fade {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">SELAMAT HARI GURU</h1>
+    <b><h2 class="title">SMP FIKRI</h2></b>
+    <b><p class="subtitle">"Guru adalah pelita ilmu yang tak pernah padam."</p></b>
+    <button class="open-btn" id="openButton" onclick="showMessage()">BUKA</button>
+    <div class="message">
+      <p>
+        Pada tanggal 25 November 2024 ini, kami, FIQRI dan AGUS, ingin mengucapkan terima kasih yang sebesar-besarnya kepada semua guru yang telah dengan tulus mengajar, membimbing, dan memberikan ilmu serta nilai-nilai kehidupan yang tak ternilai harganya.
+      </p>
+      <p>
+        FIQRI dan AGUS ucapkan rasa terima kasih yang mendalam kepada semua guru. Tanpa bimbingan dan kesabaran kalian, kami tak akan mampu menemukan arah dalam perjalanan hidup ini. Guru adalah pondasi ilmu, Inspirasi dalam setiap langkah, Qalbu yang penuh kasih, Roh yang membimbing, dan Inspirasi tak berujung. Selamat Hari Guru, pahlawan tanpa tanda jasa yang terus menyalakan cahaya dalam gelapnya kebodohan.
+      </p>
+      <b><h3 class="title">FIQRI 81</h3></b>
+      <b><h3 class="title">AGUS 74</h3></b>
+    </div>
+  </div>
+  <div class="effects" id="effects"></div>
+
+  <script>
+    function showMessage() {
+      document.querySelector('.message').style.display = 'block';
+      const button = document.getElementById('openButton');
+      button.innerText = 'BACA YA'; // Ubah teks tombol menjadi "BACA YA"
+      button.disabled = true; // Nonaktifkan tombol setelah diklik
+    }
+
+    function createEffect() {
+      const effectsContainer = document.getElementById('effects');
+      const effect = document.createElement('div');
+      const types = ['star', 'heart', 'flower'];
+      const type = types[Math.floor(Math.random() * types.length)];
+
+      effect.classList.add('effect', type);
+      effect.style.left = Math.random() * 100 + '%';
+      effect.style.top = Math.random() * 100 + '%';
+
+      effectsContainer.appendChild(effect);
+
+      setTimeout(() => {
+        effectsContainer.removeChild(effect);
+      }, 3000);
+    }
+
+    setInterval(createEffect, 200);
+  </script>
+</body>
+</html>
